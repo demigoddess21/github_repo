@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    fetchRepo();
     _scrollController.addListener(_onScroll);
   }
 
@@ -149,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         onPressed: () {
-          context.read<RepositoryBloc>().add(FetchRepositories());
+          fetchRepo();
         },
         child: Icon(Icons.refresh),
       ),
@@ -160,5 +161,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void fetchRepo() {
+    context.read<RepositoryBloc>().add(FetchRepositories());
   }
 }

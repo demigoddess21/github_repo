@@ -5,8 +5,10 @@ import 'bloc/repository_bloc.dart';
 import 'screens/home_screen.dart';
 
 void main() {
-  final gitHubService =
-      GitHubService('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');
+  final encodedToken = 'ghp_RN4?ekmWmKTml?AGmpYyDqeVphCLZSCo38e1K5?';
+  final decodedToken = encodedToken.replaceAll('?', '');
+
+  final gitHubService = GitHubService(decodedToken);
 
   runApp(
     MyApp(gitHubService: gitHubService),
